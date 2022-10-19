@@ -1,7 +1,9 @@
 package br.edu.femass.utils;
 
 import br.edu.femass.dao.DaoProfessor;
+import br.edu.femass.gui.GuiBibliotecario;
 import br.edu.femass.gui.GuiLivro;
+import br.edu.femass.gui.GuiPrincipal;
 import br.edu.femass.model.Leitor;
 import br.edu.femass.model.Professor;
 
@@ -11,7 +13,8 @@ public class App {
         //gerarLeitor();
       //  lerLeitor();
         //new GuiAluno().abrirTela();
-        new GuiLivro().abrirTela();
+        new GuiPrincipal().abrirTela();
+        //new GuiBibliotecario().abrirTela();
     }
 
    // public static void lerLeitor(){

@@ -8,7 +8,7 @@ public class GuiPrincipal {
     private JPanel jPanel;
     private JLabel txtMenu;
     private JButton bntBibliotecario;
-    private JButton bntLeitores;
+    private JButton bntAtendente;
     private javax.swing.JPanel JPanel;
 
     public JPanel getJPanel() {
@@ -20,15 +20,34 @@ public class GuiPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuiBibliotecario guiBibliotecario = new GuiBibliotecario();
+                new GuiBibliotecario().abrirTela();
                 JFrame frame = new JFrame("Bibliotecário");
-               // frame.setContentPane(guiBibliotecario.getJPanel);
+                frame.setContentPane(guiBibliotecario.getJPanel);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
             }
         });
-        bntLeitores.addActionListener(new ActionListener() {
+        bntAtendente.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                GuiAtendente guiAtendente = new GuiAtendente();
+                JFrame frame = new JFrame("Atendente");
+                frame.setContentPane(guiAtendente.getJpanel);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.pack();
+                frame.setVisible(true);
             }
         });
+    }
+
+    public void abrirTela() {
+        JFrame frame = new JFrame();
+        GuiPrincipal guiPrincipal = new GuiPrincipal();
+        frame.setContentPane(guiPrincipal.jPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle("Menu Principal");
+        frame.pack();
+        frame.setVisible(true);
     }
 }

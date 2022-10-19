@@ -9,11 +9,13 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.MaskFormatter;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
 public class GuiLivro {
+    public Container getJPanel;
     private JPanel jPanel;
     private JLabel txtCodigo;
     private JFormattedTextField formattedTextField1;
