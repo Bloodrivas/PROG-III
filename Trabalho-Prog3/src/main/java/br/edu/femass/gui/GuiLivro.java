@@ -16,6 +16,7 @@ import java.text.ParseException;
 
 public class GuiLivro {
     public Container getJPanel;
+    public Container getjPanel;
     private JPanel jPanel;
     private JLabel txtCodigo;
     private JFormattedTextField formattedTextField1;

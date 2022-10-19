@@ -15,6 +15,9 @@ public class Autor {
     public Autor() {
     }
 
+    public Autor(Autor selectedItem, Object selectedItem1, Object selectedItem2) {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -41,16 +44,16 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor{" +
-                "nome='" + nome + '\'' +
-                ", sobrenome='" + sobrenome + '\'' +
-                ", nacionalidade='" + nacionalidade + '\'' +
-                '}';
+        return this.nome+" "+this.sobrenome+" "+this.nacionalidade;
     }
 
-    public boolean equals(Object obj){
-        Autor autor = (Autor) obj;
-        if(autor.getNome().equals(this.nome) && autor.getSobrenome().equals(this.sobrenome)) return true;
-        return false;
-    }
+  //  public boolean equals(Object obj){
+  //      Autor autor = (Autor) obj;
+  //      if(autor.getNome().equals(this.nome)){
+  //          if (autor.getSobrenome().equals(this.sobrenome)){
+  //              return true;
+  //          }
+  //      }
+  //      return false;
+  //  }
 }

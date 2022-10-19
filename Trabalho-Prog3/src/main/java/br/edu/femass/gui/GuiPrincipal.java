@@ -20,9 +20,9 @@ public class GuiPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuiBibliotecario guiBibliotecario = new GuiBibliotecario();
-                new GuiBibliotecario().abrirTela();
+                new GuiBibliotecario().abrirTelaModal();
                 JFrame frame = new JFrame("Bibliotecário");
-                frame.setContentPane(guiBibliotecario.getJPanel);
+                frame.setContentPane(guiBibliotecario.getjPanel);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -32,8 +32,9 @@ public class GuiPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuiAtendente guiAtendente = new GuiAtendente();
+                new GuiAtendente().abrirTelaModal();
                 JFrame frame = new JFrame("Atendente");
-                frame.setContentPane(guiAtendente.getJpanel);
+                frame.setContentPane(guiAtendente.getjpanel);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
