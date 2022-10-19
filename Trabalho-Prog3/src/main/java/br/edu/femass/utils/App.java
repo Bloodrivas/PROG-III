@@ -1,12 +1,9 @@
-package br.edu.femass.util;
+package br.edu.femass.utils;
 
 import br.edu.femass.dao.DaoProfessor;
-import br.edu.femass.gui.GuiAluno;
 import br.edu.femass.gui.GuiLivro;
 import br.edu.femass.model.Leitor;
 import br.edu.femass.model.Professor;
-
-import java.util.List;
 
 public class App {
 
