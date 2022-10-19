@@ -6,9 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuiAtendente {
-    public Container getJpanel;
-    public Container getjpanel;
-    private JPanel jPanel;
+    public Container getjPAtendente;
+    //public Container getJpanel;
+    //protected Container getjpanel;
+    JPanel jPAtendente;
     private JButton bntProfessores;
     private JButton bntAlunos;
     private JButton bntEmprestimos;
@@ -19,7 +20,7 @@ public class GuiAtendente {
             public void actionPerformed(ActionEvent e) {
                 GuiProfessor guiProfessor = new GuiProfessor();
                 JFrame frame = new JFrame("Lista de Professores");
-                frame.setContentPane(guiProfessor.getjPanel);
+                frame.setContentPane(guiProfessor.getJPProfessor);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -30,8 +31,8 @@ public class GuiAtendente {
             public void actionPerformed(ActionEvent e) {
                 GuiAluno guiAluno = new GuiAluno();
                 JFrame frame = new JFrame("Lista de Alunos");
-                frame.setContentPane(guiAluno.getjPanel);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                frame.setContentPane(guiAluno.getjPAluno);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
             }
@@ -41,7 +42,7 @@ public class GuiAtendente {
             public void actionPerformed(ActionEvent e) {
                 GuiEmprestimo guiEmprestimo = new GuiEmprestimo();
                 JFrame frame = new JFrame("Lista de Professores");
-                frame.setContentPane(guiEmprestimo.getjPanel);
+                frame.setContentPane(guiEmprestimo.getjPEmprestimo);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -52,7 +53,7 @@ public class GuiAtendente {
     public void abrirTela() {
         JFrame frame = new JFrame();
         GuiAtendente guiAtendente = new GuiAtendente();
-        frame.setContentPane(guiAtendente.jPanel);
+        frame.setContentPane(guiAtendente.jPAtendente);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();
@@ -62,7 +63,7 @@ public class GuiAtendente {
     public void abrirTelaModal() {
         JDialog frame = new JDialog(new Frame(), true);
         GuiAtendente guiAtendente = new GuiAtendente();
-        frame.setContentPane(guiAtendente.jPanel);
+        frame.setContentPane(guiAtendente.jPAtendente);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();

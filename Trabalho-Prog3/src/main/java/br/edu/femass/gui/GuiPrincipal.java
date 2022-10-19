@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuiPrincipal {
-    private JPanel jPanel;
+    private JPanel jPPrincipal;
     private JLabel txtMenu;
     private JButton bntBibliotecario;
     private JButton bntAtendente;
@@ -34,7 +34,7 @@ public class GuiPrincipal {
                 GuiAtendente guiAtendente = new GuiAtendente();
                 new GuiAtendente().abrirTelaModal();
                 JFrame frame = new JFrame("Atendente");
-                frame.setContentPane(guiAtendente.getjpanel);
+                frame.setContentPane(guiAtendente.getjPAtendente);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.pack();
                 frame.setVisible(true);
@@ -45,7 +45,7 @@ public class GuiPrincipal {
     public void abrirTela() {
         JFrame frame = new JFrame();
         GuiPrincipal guiPrincipal = new GuiPrincipal();
-        frame.setContentPane(guiPrincipal.jPanel);
+        frame.setContentPane(guiPrincipal.jPPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Menu Principal");
         frame.pack();

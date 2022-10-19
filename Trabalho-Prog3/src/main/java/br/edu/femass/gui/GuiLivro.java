@@ -2,7 +2,6 @@ package br.edu.femass.gui;
 
 import br.edu.femass.dao.DaoAluno;
 import br.edu.femass.dao.DaoLivro;
-import br.edu.femass.model.Aluno;
 import br.edu.femass.model.Livro;
 
 import javax.swing.*;
@@ -17,7 +16,7 @@ import java.text.ParseException;
 public class GuiLivro {
     public Container getJPanel;
     public Container getjPanel;
-    private JPanel jPanel;
+    private JPanel jPLivro;
     private JLabel txtCodigo;
     private JFormattedTextField formattedTextField1;
     private JTextField textField1;
@@ -26,20 +25,19 @@ public class GuiLivro {
     private JTextField textField2;
     private JLabel txtAno;
     private JFormattedTextField formattedTextField2;
-    private JButton bntSalvar;
+    private JButton bntCadLivro;
     private JList lstLivro;
 
 
     public GuiLivro() {
-        bntSalvar.addActionListener(new ActionListener() {
+        bntCadLivro.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try{
-                    Livro livro = new Livro(txtCodigo.getText(), txtTitulo.getText(), txtAutor.getText(), txtAno.getText());
-                    new DaoLivro().save(livro);
+                new GuiSalvarAutor().abrirTelaModal();
+                try {
                     preencherLista();
-                }catch (Exception ex){
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });
@@ -55,7 +53,7 @@ public class GuiLivro {
                     JOptionPane.showMessageDialog(null, ee.getMessage());
                 }
 
-//                txtCodigo.setText(livro.getCodigo());
+                //txtCodigo.setText(livro.getCodigo());
                 //              txtTitulo.setText(livro.getTitulo());
                 //            txtAutor.setText(livro.getAutor());
                 //          txtAno.setText(livro.getAno());}
@@ -66,35 +64,30 @@ public class GuiLivro {
     private void preencherLista(){
         try {
             lstLivro.setListData(
-                    new DaoAluno().getAll().toArray(new Livro[0]));
+                    new DaoAluno().getAll().toArray());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }
 
-    public void abrirTela(){
+    public void abrirTela() {
+        JFrame frame = new JFrame();
         GuiLivro guiLivro = new GuiLivro();
-
-        JFrame frame = new JFrame("Livro");
-        guiLivro.preencherLista();
-        frame.setContentPane(guiLivro.jPanel);
-
-        //Fecha a tela
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //Mascara de formatação
-       // try {
-       //     MaskFormatter mascara = new MaskFormatter("##/##/####");
-       //     mascara.install(guiLivro.txtAno);
-       // } catch (ParseException e) {
-       //     throw new RuntimeException(e);
-       // }
-
+        frame.setContentPane(guiLivro.jPLivro);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setTitle("Menu de Livros:");
         frame.pack();
-
         frame.setVisible(true);
     }
 
-
+    public void abrirTelaModal() {
+        JDialog frame = new JDialog(new Frame(), true);
+        GuiLivro guiLivro = new GuiLivro();
+        frame.setContentPane(guiLivro.jPLivro);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setTitle("Menu de Livros:");
+        frame.pack();
+        frame.setVisible(true);
+    }
 
 }

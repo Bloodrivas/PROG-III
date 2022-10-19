@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class GuiBibliotecario {
     public Container getJPanel;
     public Container getjPanel;
-    private JPanel jPanel;
+    private JPanel jPBibliotecario;
     private JButton bntCadAutor;
     private JButton bntCadLivro;
     private JButton bntExemplar;
@@ -35,6 +35,11 @@ public class GuiBibliotecario {
             public void actionPerformed(ActionEvent e) {
                 GuiLivro guiLivro = new GuiLivro();
                 JFrame frame = new JFrame("Livro");
+                try{
+                    new GuiLivro().abrirTelaModal();
+                }catch (Exception m){
+                    JOptionPane.showMessageDialog(null, m.getMessage());
+                }
                 frame.setContentPane(guiLivro.getjPanel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -46,6 +51,11 @@ public class GuiBibliotecario {
             public void actionPerformed(ActionEvent e) {
                 GuiExemplar guiExemplar = new GuiExemplar();
                 JFrame frame = new JFrame("Exemplar");
+                try{
+                    new GuiExemplar().abrirTelaModal();
+                }catch (Exception m){
+                    JOptionPane.showMessageDialog(null, m.getMessage());
+                }
                 frame.setContentPane(guiExemplar.getjPanel);
                 frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 frame.pack();
@@ -57,7 +67,7 @@ public class GuiBibliotecario {
     public void abrirTela() {
         JFrame frame = new JFrame();
         GuiBibliotecario guiBibliotecario = new GuiBibliotecario();
-        frame.setContentPane(guiBibliotecario.jPanel);
+        frame.setContentPane(guiBibliotecario.jPBibliotecario);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();
@@ -67,7 +77,7 @@ public class GuiBibliotecario {
     public void abrirTelaModal() {
         JDialog frame = new JDialog(new Frame(), true);
         GuiBibliotecario guiBibliotecario = new GuiBibliotecario();
-        frame.setContentPane(guiBibliotecario.jPanel);
+        frame.setContentPane(guiBibliotecario.jPBibliotecario);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();

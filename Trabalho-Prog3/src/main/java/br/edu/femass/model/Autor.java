@@ -1,5 +1,7 @@
 package br.edu.femass.model;
 
+import javax.swing.*;
+
 public class Autor {
 
     private String nome;
@@ -16,6 +18,9 @@ public class Autor {
     }
 
     public Autor(Autor selectedItem, Object selectedItem1, Object selectedItem2) {
+    }
+
+    public Autor(String text, String text1, String text2, JTextField txtAno) {
     }
 
     public String getNome() {

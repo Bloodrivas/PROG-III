@@ -11,17 +11,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-import java.util.List;
 
 public class GuiAluno {
     public Container getJPanel;
     public Container getjPanel;
+    public Container getjPAluno;
     private JTextField txtNome;
     private JLabel txtMatricula;
     private JTextField txtEndereco;
     private JFormattedTextField txtTelefone;
     private JButton btnSalvar;
-    private JPanel jPanel;
+    private JPanel jPAluno;
     private JScrollPane jScrollPane;
     private JList lstAlunos;
     private JFormattedTextField formattedTextField1;
@@ -72,7 +72,7 @@ public class GuiAluno {
 
         JFrame frame = new JFrame("Aluno");
         guiAluno.preencherLista();
-        frame.setContentPane(guiAluno.jPanel);
+        frame.setContentPane(guiAluno.jPAluno);
 
         //Fecha a tela
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

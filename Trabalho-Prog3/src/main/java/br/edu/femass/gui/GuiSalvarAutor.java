@@ -1,5 +1,8 @@
 package br.edu.femass.gui;
 
+import br.edu.femass.dao.DaoAutor;
+import br.edu.femass.model.Autor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,12 +20,13 @@ public class GuiSalvarAutor {
         bntSalvar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                GuiSalvarAutor guiSalvarAutor = new GuiSalvarAutor();
-                JFrame frame = new JFrame("Cadastrar Autor");
-                frame.setContentPane(guiSalvarAutor.getjPanel);
-                frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                frame.pack();
-                frame.setVisible(true);
+                try {
+                    Autor autor = new Autor(txtNome.getText(), txtSobrenome.getText(), txtNacionalidade.getText());
+                    new DaoAutor().save(autor);
+                    System.out.println(autor);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
             }
         });
     }

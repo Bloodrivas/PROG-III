@@ -7,12 +7,15 @@ public class Exemplar {
     private Long codigo;
     private LocalDate dataAquisicao;
 
-    public Exemplar(){
+    public Exemplar(Object selectedValue){
     }
 
     public Exemplar(Long codigo, LocalDate dataAquisicao) {
         this.codigo = codigo;
         this.dataAquisicao = dataAquisicao;
+    }
+
+    public Exemplar(String text, String text1) {
     }
 
     public Long getCodigo() {
@@ -33,10 +36,7 @@ public class Exemplar {
 
     @Override
     public String toString() {
-        return "Exemplar{" +
-                "codigo=" + codigo +
-                ", dataAquisicao=" + dataAquisicao +
-                '}';
+        return this.codigo+" "+this.dataAquisicao;
     }
 
     @Override

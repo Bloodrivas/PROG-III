@@ -21,6 +21,9 @@ public class Livro {
     public Livro(String text, String text1, String text2, String text3) {
     }
 
+    public Livro(String text, String text1) {
+    }
+
     public Long getCodigo() {
         return codigo;
     }

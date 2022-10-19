@@ -14,12 +14,9 @@ import java.util.List;
 public class GuiAutor {
     public Container getJPanel;
     public Container getjPanel;
-    private JPanel jPanel;
+    private JPanel jPAutor;
     private JList lstAutor;
-    private JComboBox cboNome;
-    private JComboBox cboSobrenome;
-    private JComboBox cboNacionalidade;
-    private JButton bntSalvar;
+    private JButton bntAtualizar;
     private JButton bntCadastrarNovo;
     private JLabel txtNome;
     private JLabel txtSobrenome;
@@ -32,12 +29,9 @@ public class GuiAutor {
                 Autor autor = (Autor) lstAutor.getSelectedValue();
                 if(autor == null) return;
 
-                txtNome.setText(autor.getNome().toString());
-                txtSobrenome.setText(autor.getSobrenome().toString());
-                txtNacionalidade.setText(autor.getNacionalidade().toString());
-                cboNome.setSelectedItem(autor.getNome());
-                cboSobrenome.setSelectedItem(autor.getSobrenome());
-                cboNacionalidade.setSelectedItem(autor.getNacionalidade());
+                txtNome.setText(autor.getNome());
+                txtSobrenome.setText(autor.getSobrenome());
+                txtNacionalidade.setText(autor.getNacionalidade());
             }
         });
         bntCadastrarNovo.addActionListener(new ActionListener() {
@@ -45,25 +39,16 @@ public class GuiAutor {
             public void actionPerformed(ActionEvent e) {
                 new GuiSalvarAutor().abrirTelaModal();
                 try {
-                    preencherListaAutores();
+                    preencherLista();
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }
         });
-        bntSalvar.addActionListener(new ActionListener() {
+        bntAtualizar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    Autor autor = new Autor(
-                            (Autor) cboNome.getSelectedItem(),
-                            cboSobrenome.getSelectedItem(),
-                            cboNacionalidade.getSelectedItem()
-                    );
-                    new DaoAutor().save(autor);
-                } catch (Exception ex) {
-                    JOptionPane.showMessageDialog(null, ex.getMessage());
-                }
+                updateList();
             }
         });
     }
@@ -76,29 +61,11 @@ public class GuiAutor {
         }
     }
 
-    private void preencherListaAutores() throws Exception {
-        try{
-            List<Autor> autores = new DaoAutor().getAll();
-            cboNome.removeAllItems();
-            cboSobrenome.removeAllItems();
-            cboNacionalidade.removeAllItems();
-            for(Autor autor:autores){
-                cboNome.addItem(autor);
-                cboSobrenome.addItem(autor);
-                cboNacionalidade.addItem(autor);
-            }
-            //lstAutor.setListData(new DaoAutor().getAll().toArray());
-        }catch (Exception ee){
-            JOptionPane.showMessageDialog(null, ee.getMessage());
-        }
-    }
-
     public void abrirTela() throws Exception {
         JFrame frame = new JFrame();
         GuiAutor guiAutor = new GuiAutor();
         guiAutor.preencherLista();
-        guiAutor.preencherListaAutores();
-        frame.setContentPane(guiAutor.jPanel);
+        frame.setContentPane(guiAutor.jPAutor);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();
@@ -109,11 +76,19 @@ public class GuiAutor {
         JDialog frame = new JDialog(new Frame(), true);
         GuiAutor guiAutor = new GuiAutor();
         guiAutor.preencherLista();
-        guiAutor.preencherListaAutores();
-        frame.setContentPane(guiAutor.jPanel);
+        frame.setContentPane(guiAutor.jPAutor);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setTitle("Menu do Bibliotecário(a):");
         frame.pack();
         frame.setVisible(true);
+    }
+
+    private void updateList() {
+        try {
+            List<Autor> autores = new DaoAutor().getAll();
+            lstAutor.setListData(autores.toArray());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
